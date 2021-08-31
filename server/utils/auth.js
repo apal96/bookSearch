@@ -16,6 +16,7 @@ module.exports = {
     }
 
     if (!token) {
+      console.log("no token")
       return req;
       // return res.status(400).json({ message: 'You have no token!' });
     }

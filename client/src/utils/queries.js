@@ -3,5 +3,14 @@ export const GET_ME = gql`
     query me{
         _id
         username
-        savedBooks
+        email
+        savedBooks{
+            bookId
+            authors
+            description
+            title
+            image
+            link
+        }
+
     }`;
