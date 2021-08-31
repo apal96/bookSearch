@@ -5,11 +5,14 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
       //find single user by id or username
-      me: async (parent, { _id,username }) => {
-      const params = _id || username? { _id,username } : {};
-      return User.findOne({
-        $or: [{ _id: user ? user._id : params.id }, { username: params.username }],
+      me: async (parent, { _id,username },context) => {
+      if(context.user){
+      const thisUser = User.findOne({
+        $or: [{ _id:context.user_id }, { username: context.user.username}],
       });
+      return thisUser;
+    }
+    throw new AuthenticationError('You need to be logged in!');
     },
   },
   Mutation: {
