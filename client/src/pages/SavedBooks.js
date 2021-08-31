@@ -3,6 +3,8 @@ import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap
 import { useQuery, useMutation } from '@apollo/client';
 
 import { getMe, deleteBook } from '../utils/API';
+import {GET_ME} from '../utils/queries'
+import {REMOVE_BOOK} from '../utils/mutations'
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
@@ -13,6 +15,11 @@ const SavedBooks = () => {
   const userDataLength = Object.keys(userData).length;
   const { loading, data } = useQuery(GET_ME, {
   });
+  const [deleteBook, { error, removeData }] = useMutation(REMOVE_BOOK);
+
+  if (data && Object.keys(userData).length === 0) {
+    setUserData(data.me);
+  }
   // useEffect(() => {
     // const getUserData = async () => {
     //   try {
@@ -98,6 +105,12 @@ const SavedBooks = () => {
           })}
         </CardColumns>
       </Container>
+      <div>
+      {error && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+              </div>)}
+      </div>
     </>
   );
 };
