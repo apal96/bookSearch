@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.19.0",
-    "graphql": "^15.5.1"
+    "graphql": "^15.5.1",
+    "nodemon": "^2.0.12"
   }
 }
