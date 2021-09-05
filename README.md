@@ -39,6 +39,8 @@ npm start
 
 * [See Live Site]( https://guarded-caverns-36001.herokuapp.com/)
 
+![Functionality]( https://raw.githubusercontent.com/apal96/bookSearch/main/client/public/2021-09-04%2021.58.43.gif)
+
 
 ## Authors
 
